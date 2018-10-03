@@ -1,4 +1,4 @@
-# Actualizar la funcion lambda desde la linea de comandos
+# Actualizar la función lambda utilizando AWS CLI
 
 ## Este proceso consta de dos 4 pasos
 
