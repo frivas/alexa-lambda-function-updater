@@ -1,20 +1,8 @@
 # alexa-lambda-function-updater
-Rudimentary bash script to update Lambda Functions using AWS CLI
 
-Usage: 
+# Actualizar la funcion lambda desde la linea de comandos
 
-```$ ./lambdaUpdater.sh -z ZIP_FILENAME -f LAMBDA_FUNCTION_NAME```
-
-Note: All parameters are required
-
-Parameter ZIP_FILENAME does not need the .zip extension
-
-
-
-
-#Actualizar la funcion lambda desde la linea de comandos
-
-##Este proceso consta de dos 4 pasos
+## Este proceso consta de dos 4 pasos
 
 1. Instalación de AWS CLI
 2. Configurar un usuario que tenga permisos para modificar Lambda
@@ -162,3 +150,5 @@ El resultado es algo como esto:
 	}
 	
 ### Paso #4: ✅
+
+Si tienes dudas, sugerencias, correcciones, comentarios o incluso quieres colaborar mejorando el script, no dudes en dejarmelo saber.
