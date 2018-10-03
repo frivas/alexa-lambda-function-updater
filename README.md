@@ -2,7 +2,7 @@
 
 # Actualizar la función lambda utilizando AWS CLI
 
-Es bastante común al momento de desarrollar nuestra skill hacer pruebas locales y a su vez hacer muchos cambios. Cuando trabajamos en una función Lambda que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
+Es bastante común al momento de desarrollar nuestra skill hacer pruebas locales y a su vez hacer muchos cambios para reparar cualquier error que detectemos. Cuando trabajamos en una función Lambda que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
 
 ## Este proceso consta de 4 pasos:
 
