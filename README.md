@@ -1,6 +1,6 @@
 # Actualizar la función lambda utilizando AWS CLI
 
-## Este proceso consta de dos 4 pasos
+## Este proceso consta de 4 pasos:
 
 1. Instalación de AWS CLI
 2. Configurar un usuario que tenga permisos para modificar Lambda
