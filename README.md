@@ -1,5 +1,3 @@
-# alexa-lambda-function-updater
-
 # Actualizar la funcion lambda desde la linea de comandos
 
 ## Este proceso consta de dos 4 pasos
