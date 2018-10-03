@@ -1,17 +1,53 @@
 ![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonWebServices.png)
 
-# Actualizar la función lambda utilizando AWS CLI
+# Actualizar la función lambda de tu skill de Alexa utilizando AWS CLI
 
-Es bastante común al momento de desarrollar nuestra skill hacer pruebas locales y a su vez hacer muchos cambios para reparar cualquier error que detectemos. Cuando trabajamos en una función Lambda que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
+Es bastante común al momento de desarrollar nuestra *skill* de Alexa hacer pruebas locales y a su vez hacer muchos cambios para reparar cualquier error que detectemos. Cuando trabajamos en la función Lambda asociada a nuestro *skill* de Alexa que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
 
 ## Este proceso consta de 4 pasos:
 
-1. Instalación de AWS CLI
-2. Configurar un usuario que tenga permisos para modificar Lambda
-3. Configurar el AWS CLI con la información del usuario 
-4. Ejecución del script de actualización de la función
+1. Configurar un usuario que tenga permisos para modificar Lambda
+2. Instalar AWS CLI
+3. Configurar AWS CLI con la información del usuario 
+4. Ejecutar el script de actualización de la función
 
-## Paso #1: Instalación del cliente de AWS
+## Paso #1: Configurar un usuario en IAM
+
+- Visita: [Amazon Console](http://console.aws.amazon.com/)
+
+Puedes hacer click sobre el enlace de IAM. En caso de no ver directamente la función puedes escribir "iam" en el cuadro de texto y filtrar automáticamente.
+
+![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonConsole.png)
+
+- Luego, por defecto **Dashboard** es la opción por defecto. En este caso nos interesa **Users**(1) y luego hacer click en el botón **Add User**(2).
+
+![Add User](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUser.png)
+
+- Inserta un nombre de usuario(3), preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programmatic Access**(4) esta marcada. Esto es muy importante.
+
+**De nuevo, cerciórate de que la casilla Programatic Access está marcada** ;)
+
+Ahora sí, click en **Next: Permissions**(5)
+
+![Add User Info](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserInfo.png)
+
+
+- Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un montón de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
+
+
+![Add User Policies Configuration](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserPolicies.png)
+
+- En esta parte del proceso, simplemente revisamos que todo esta correcto. Sí, revisamos que todo esta correcto. Listo?. Click, en **Create User**(10)
+
+![Add User Information Review](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserReview.png)
+
+- Finalmente, una vez que el usuario ha sido creado, podrás ver la información de **Access Key ID** y **Secret Access Key**. Es recomendable descargar el archivo **.csv** con la información. Click en **Close**.
+
+![Add User Success](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserSuccess.png)
+
+### Paso #1: ✅
+
+## Paso #2: Instalar AWS CLI
 
 Para este paso es necesario tener PIP (pip) instalado. Para verificar si está instalado:
 
@@ -47,42 +83,6 @@ Terminado el proceso de instalación, confirmamos:
 	  aws <command> <subcommand> help
 	aws: error: the following arguments are required: command
 
-### Paso #1: ✅
-
-## Paso #2: Configurar un usuario en IAM
-
-- Visita: [Amazon Console](http://console.aws.amazon.com/)
-
-Puedes hacer click sobre el enlace de IAM. En caso de no ver directamente la función puedes escribir "iam" en el cuadro de texto y filtrar automáticamente.
-
-![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonConsole.png)
-
-- Luego, por defecto **Dashboard** es la opción por defecto. En este caso nos interesa **Users**(1) y luego hacer click en el botón **Add User**(2).
-
-![Add User](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUser.png)
-
-- Inserta un nombre de usuario(3), preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programmatic Access**(4) esta marcada. Esto es muy importante.
-
-**De nuevo, cerciórate de que la casilla Programatic Access está marcada** ;)
-
-Ahora sí, click en **Next: Permissions**(5)
-
-![Add User Info](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserInfo.png)
-
-
-- Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un montón de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
-
-
-![Add User Policies Configuration](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserPolicies.png)
-
-- En esta parte del proceso, simplemente revisamos que todo esta correcto. Sí, revisamos que todo esta correcto. Listo?. Click, en **Create User**(10)
-
-![Add User Information Review](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserReview.png)
-
-- Finalmente, una vez que el usuario ha sido creado, podrás ver la información de **Access Key ID** y **Secret Access Key**. Es recomendable descargar el archivo **.csv** con la información. Click en **Close**.
-
-![Add User Success](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserSuccess.png)
-
 ### Paso #2: ✅
 
 ## Paso #3: Configurar AWS CLI
@@ -103,9 +103,9 @@ Para ello utilizamos **Terminal.app**.
 
 ### Paso #3: ✅
 
-## Paso #4: Ejecución del script de actualización
+## Paso #4: Ejecutar el script de actualización
 
-He creado un pequeño (bastante rudimentario) script que con solo un par de parámetros actualiza la función lambda que desees.
+He creado un pequeño (bastante rudimentario) script que con solo un par de parámetros actualiza la función lambda de nuestra skill de Alexa.
 
 El script esta disponible [aqui](https://github.com/frivas/alexa-lambda-function-updater)
 
