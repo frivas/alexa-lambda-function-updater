@@ -4,7 +4,7 @@
 
 1. Instalación de AWS CLI
 2. Configurar un usuario que tenga permisos para modificar Lambda
-3. Configurar el cliente AWS con la información del usuario 
+3. Configurar el AWS CLI con la información del usuario 
 4. Ejecución del script de actualización de la función
 
 ## Paso #1: Instalación del cliente de AWS
@@ -14,7 +14,7 @@ Para este paso es necesario tener PIP (pip) instalado. Para verificar si está i
 	$ pip -V
 	pip 18.0 from /usr/local/lib/python3.7/site-packages/pip (python 3.7)
 
-Si no esta instalado, puedes visitar este [enlace](https://gist.github.com/haircut/14705555d58432a5f01f9188006a04ed) en el que encontraras los pasos para ello
+Si no está instalado, puedes visitar este [enlace](https://gist.github.com/haircut/14705555d58432a5f01f9188006a04ed) en el que encontraras los pasos para ello.
 
 Bien, una vez instalado PIP, procedemos a instalar AWS CLI
 
@@ -47,37 +47,37 @@ Terminado el proceso de instalación, confirmamos:
 
 ## Paso #2: Configurar un usuario en IAM
 
-Visita: [Amazon Console](http://console.aws.amazon.com/)
+- Visita: [Amazon Console](http://console.aws.amazon.com/)
 
 Puedes hacer click sobre el enlace de IAM. En caso de no ver directamente la función puedes escribir "iam" en el cuadro de texto y filtrar automáticamente.
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.14.08.png
+![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonConsole.png)
 
-Luego, por defecto **Dashboard** es la opcion por defecto. En este caso nos interesa **Users** (1) y luego hacer click en el boton **Add User** (2).
+- Luego, por defecto **Dashboard** es la opción por defecto. En este caso nos interesa **Users**(1) y luego hacer click en el boton **Add User**(2).
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.18.32.png
+![Add User](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUser.png)
 
-Inserta un nombre de usuario, preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programatic Access** esta marcada. Esto es muy importante.
+- Inserta un nombre de usuario(3), preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programatic Access**(4) esta marcada. Esto es muy importante.
 
 **De nuevo, cercioráte de que la casilla Programatic Access está marcada** ;)
 
-Ahora si, click en **Next: Permissions**
+Ahora sí, click en **Next: Permissions**
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.20.23.png
-
-Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un monton de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
+![Add User Info](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserInfo.png)
 
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.41.35.png
+- Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un monton de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
 
 
-En esta parte del proceso, simplemente revisamos que todo esta correcto. Sí, revisamos que todo esta correcto. Listo?. Click, en **Create User**(10)
+![Add User Policies Configuration](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserPolicies.png)
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.43.49.png
+- En esta parte del proceso, simplemente revisamos que todo esta correcto. Sí, revisamos que todo esta correcto. Listo?. Click, en **Create User**(10)
 
-Finalmente, una vez que el usuario ha sido creado, podrás ver la información de **Access Key ID** y **Secret Access Key**. Es recomendable descargar el archivo **.csv** con la información. Click en **Close**.
+![Add User Information Review](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserReview.png)
 
-/Users/fran/Desktop/Screenshot 2018-10-03 at 01.44.42.png
+- Finalmente, una vez que el usuario ha sido creado, podrás ver la información de **Access Key ID** y **Secret Access Key**. Es recomendable descargar el archivo **.csv** con la información. Click en **Close**.
+
+![Add User Success](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserSuccess.png)
 
 ### Paso #2: ✅
 
