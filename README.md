@@ -61,7 +61,7 @@ Puedes hacer click sobre el enlace de IAM. En caso de no ver directamente la fun
 
 **De nuevo, cercioráte de que la casilla Programatic Access está marcada** ;)
 
-Ahora sí, click en **Next: Permissions**
+Ahora sí, click en **Next: Permissions**(5)
 
 ![Add User Info](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserInfo.png)
 
