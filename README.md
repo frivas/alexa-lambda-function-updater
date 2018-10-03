@@ -1,6 +1,6 @@
 ![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonWebServices.png)
 
-# Actualizar la función lambda de tu skill de Alexa utilizando AWS CLI
+# Tutorial: Cçomo actualizar la función lambda de tu skill de Alexa utilizando AWS CLI
 
 Es bastante común al momento de desarrollar nuestra *skill* de Alexa hacer pruebas locales y a su vez hacer muchos cambios para reparar cualquier error que detectemos. Cuando trabajamos en la función Lambda asociada a nuestro *skill* de Alexa que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
 
