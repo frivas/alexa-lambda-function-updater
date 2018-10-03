@@ -1,5 +1,7 @@
 # Actualizar la función lambda utilizando AWS CLI
 
+Es bastante común al momento de desarrollar nuestra skill hacer pruebas locales y a su vez hacer muchos cambios. Cuando trabajamos en una función Lambda que utiliza otros módulos bien sean de NodeJS o Python el editor inline tiene ciertas limitaciones por lo que el equipo de Lambda de AWS ofrece una alternativa, utilizando AWS CLI para actualizar la función Lambda. En este artículo describo los pasos que debemos seguir para lograr esto.
+
 ## Este proceso consta de 4 pasos:
 
 1. Instalación de AWS CLI
@@ -53,20 +55,20 @@ Puedes hacer click sobre el enlace de IAM. En caso de no ver directamente la fun
 
 ![Amazon Console](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AmazonConsole.png)
 
-- Luego, por defecto **Dashboard** es la opción por defecto. En este caso nos interesa **Users**(1) y luego hacer click en el boton **Add User**(2).
+- Luego, por defecto **Dashboard** es la opción por defecto. En este caso nos interesa **Users**(1) y luego hacer click en el botón **Add User**(2).
 
 ![Add User](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUser.png)
 
-- Inserta un nombre de usuario(3), preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programatic Access**(4) esta marcada. Esto es muy importante.
+- Inserta un nombre de usuario(3), preferiblemente uno que te permita distinguir su utilzación para Lambda. Asegurate de que la casilla **Programmatic Access**(4) esta marcada. Esto es muy importante.
 
-**De nuevo, cercioráte de que la casilla Programatic Access está marcada** ;)
+**De nuevo, cerciórate de que la casilla Programatic Access está marcada** ;)
 
 Ahora sí, click en **Next: Permissions**(5)
 
 ![Add User Info](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserInfo.png)
 
 
-- Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un monton de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
+- Ahora es momento de permisos. Click en **Attach existing policies directly**(6) por defecto viene marcada la primera opción (esa no la queremos por ahora). Van a aparecer un montón de políticas, sin embargo, nos interesa solo la resultante de aplicar el filtro "LambdaFullAccess"(7) . Marca la casilla que indica "AWSLambdaFullAccess"(8) Luego click en **Next:Review**(9)
 
 
 ![Add User Policies Configuration](https://github.com/frivas/alexa-lambda-function-updater/blob/master/imgs/AddUserPolicies.png)
@@ -99,13 +101,13 @@ Para ello utilizamos **Terminal.app**.
 
 ### Paso #3: ✅
 
-## Paso #4: 
+## Paso #4: Ejecución del script de actualización
 
 He creado un pequeño (bastante rudimentario) script que con solo un par de parámetros actualiza la función lambda que desees.
 
 El script esta disponible [aqui](https://github.com/frivas/alexa-lambda-function-updater)
 
-La forma de ejercutarlo es:
+La forma de ejecutarlo es:
 
 	$./lambdaUpdater.sh -z ZIP_FILENAME -f LAMBDA_FUNCTION_NAME
 
@@ -116,8 +118,8 @@ Por ejemplo:
 El script hace varias cosas:
 
 - Elimina el archivo lambdaFunction.zip existente
-- Crea un archivo lambdaFuntion.zip nuevo, excluyendo todos los archivos y directorios cuyos nombres comiencen por "test" y tambien el archivo creado por VSCode cuando se crea un nuevo Workspace.
-- Utilizando el comando "lambda" de AWS CLI actualiza la funcion.
+- Crea un archivo lambdaFuntion.zip nuevo, excluyendo todos los archivos y directorios cuyos nombres comiencen por "test" y también el archivo creado por VSCode cuando se crea un nuevo Workspace.
+- Utilizando el comando "lambda" de AWS CLI actualiza la función.
 
 El resultado es algo como esto:
 
